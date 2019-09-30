@@ -51,7 +51,7 @@ void	introduction(t_champion** champions, t_rules* rules)
 	while (++count <= rules->much_players)
 	{
 		current_champion = select_champion(champions, current_champion);
-		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+		printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 				champions[current_champion]->number,
 				champions[current_champion]->size,
 				champions[current_champion]->name,

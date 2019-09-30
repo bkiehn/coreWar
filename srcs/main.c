@@ -119,7 +119,7 @@ int 	main(int argc, char** argv) {
 	rules = ft_memalloc(sizeof(t_rules));
 	if (!parseArg(argc, argv, rules, champions))
 	{
-		ft_printf("%sОшибка на этапе обнаружения настроек для разрушителей или при их создании.%s\n", RED, NO_COLOR);
+		ft_printf("Ошибка на этапе обнаружения настроек для разрушителей или при их создании.\n");
 		exit (0);
 	}
 	if (rules->much_players != 0)

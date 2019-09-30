@@ -50,7 +50,7 @@ int     definition_color(t_champion** champions, int number_champion, int count)
         ft_printf(champions[number_champion]->color);
     if (count == champions[number_champion]->size + champions[number_champion]->position)
     {
-        ft_printf(NO_COLOR);
+//        ft_printf(NO_COLOR);
         number_champion = select_champion(champions, number_champion + 1);
     }
 
@@ -128,7 +128,7 @@ void	to_string(t_champion* cursors, char flag_body)
 		ft_printf("Body:\n");
 		print_bytes_hex(cursors->body, cursors->size);
 	}
-	ft_printf("%s-------------------------\n", NO_COLOR);
+	ft_printf("-------------------------\n");
 }
 
 void	print_cursors(t_champion* cursors, char flag_body)

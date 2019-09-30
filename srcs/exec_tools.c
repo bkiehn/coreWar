@@ -28,7 +28,7 @@ int		get_arg(t_rules* rules, t_champion* cursor, unsigned char *t_args, int num_
 		arg = (int)get_value_from_battlefield(rules, cursor->position, offset,
 										 g_op_tab[cursor->code_operation].dir_size);
 	else if (t_args[num_arg] == REG_CODE)
-		arg = get_value_from_battlefield(rules, cursor->position, offset,
+		arg = (int)get_value_from_battlefield(rules, cursor->position, offset,
 										 REG_CODE_SIZE);
 	return arg;
 }
@@ -45,8 +45,7 @@ unsigned int	get_value_from_battlefield(t_rules *rules,
     while (byte_index < size)
     {
         byte_value = rules->battlefield[(position + offset + byte_index) % MEM_SIZE];
-//        printf("%d-th byte:%x\n", byte_index, byte_value);
-        value = value | (byte_value << (byte_index * 8));
+        value = value | (byte_value << ((size - byte_index - 1) * 8));
         ++byte_index;
     }
     return (value);
@@ -61,7 +60,7 @@ void		set_value_in_battlefield(t_rules *rules, int position, int size, int value
 	while (byte_index < size)
 	{
 		byte_value = 0;
-		byte_value |= (value >> ((size - byte_index - 1) * 8));
+		byte_value |= (value >> ((size - byte_index - 1) * 8)); // Не пойму, в каком порядке вытягивать байты
 		rules->battlefield[(position + byte_index) % MEM_SIZE] = byte_value;
 		++byte_index;
 	}
